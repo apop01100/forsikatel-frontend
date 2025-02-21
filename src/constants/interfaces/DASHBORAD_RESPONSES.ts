@@ -20,9 +20,14 @@ export interface TopRegion {
     total_juz: number;
 }
 
+export interface Hadist{
+    hadits: string;
+    source: string
+}
+
 export interface DashboardResponse {
     name: string
-    hadits: string
+    hadits: Hadist
     kalender: Calendar
     last_juz: number
     latest_activity: LatestActivity[]

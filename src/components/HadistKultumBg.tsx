@@ -13,7 +13,10 @@ type hadistKultumProps = {
     hadist_kultum: {
         channel: string,
         day: number,
-        hadist: string,
+        hadist: {
+            hadist: string
+            source: string
+        },
         id: number,
         kultum: string,
         metadata: {
@@ -83,7 +86,9 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
         <section className="flex flex-col w-full gap-2 2xl:pb-[5rem] px-[1rem] md:pr-[2.1rem] mt-5 md:mt-0">
             <h2 className="text-2xl hidden md:block font-semibold text-neutral-900">Hadits Hari Ini</h2>
             <div className=" bg-white box-shadow rounded-2xl px-5 py-3 min-h-[10rem]">
-                <p>{data?.hadist_kultum.hadist || loading}</p>
+                <p className="text-justify font-source">{data?.hadist_kultum.hadist.hadist || loading}</p>
+                <br />
+                <p className="text-neutral-300 font-source">{data?.hadist_kultum.hadist.source || loading}</p>
             </div>
         </section>
         </>) }

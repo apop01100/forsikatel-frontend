@@ -46,7 +46,7 @@ const EmbedVideo = ({ videoId, title, channel }: { videoId: string | undefined, 
         </div>
         <div className="px-10 pt-3">
             <h3 className="font-normal font-source text-lg text-neutral-500">{channel || "Loading..."}</h3>
-            <h2 className="text-2xl font-semibold text-neutral-900">{title || "Loading..."}</h2>
+            <h2 className="text-2xl font-semibold font-source text-neutral-900">{title || "Loading..."}</h2>
         </div>
     </>
   )

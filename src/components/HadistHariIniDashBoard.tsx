@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import RightArrow from "../assets/svg/right-arrow.svg"
+import { Hadist } from "../constants/interfaces/DASHBORAD_RESPONSES"
 interface HadistHariIniDashBoardProps {
     isMobile?: boolean
     isDesktop?: boolean
-    data?: string
+    data?: Hadist
 }
 
-const HadistHariIniDashBoard: React.FC<HadistHariIniDashBoardProps> = ({isMobile, isDesktop, data=""}) => {
+const HadistHariIniDashBoard: React.FC<HadistHariIniDashBoardProps> = ({isMobile, isDesktop, data}) => {
   return (
     <>
         {isDesktop && (
@@ -20,7 +21,9 @@ const HadistHariIniDashBoard: React.FC<HadistHariIniDashBoardProps> = ({isMobile
                         <img src={RightArrow} alt="right_arrow_icon" className="object-cover"/>
                     </Link>
                 </div>
-                <p className="text-sm font-source text-justify">{ data }</p>
+                <p className="text-sm font-source text-justify">{ data?.hadits }</p>
+                <br />
+                <p className="text-sm text-neutral-300 font-source text-justify">{ data?.source }</p>
             </div>
         )}
 
