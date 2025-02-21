@@ -5,6 +5,7 @@ import validationSchema from "../schemas/LoginValidationSchema";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { API_LOGIN  } from "../constants/URL_API";
+import { useEffect } from "react";
 
 interface LoginValues {
   fullName: string;
@@ -20,7 +21,7 @@ interface LoginResponse {
 const LoginForm = () => {
   const { data, error, loading, fetchData } = useFetch<LoginResponse>(API_LOGIN, "POST");
 
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
   const initialValues = {
     fullName: "",
     phoneNumber: "",
@@ -28,17 +29,19 @@ const LoginForm = () => {
 
   const handleSubmit = async (values: LoginValues) => {
     await fetchData({ name_husband: values.fullName, phone_number: values.phoneNumber });
-    if (data) { 
-      console.log(data, error)
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("refresh_token", data.refresh_token);
-      Navigate("/");
-    }
 
     if (error) {
       alert(error);
     }
   }
+
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
+      navigate("/");
+    }
+  }, [data, navigate]);
 
   return (
     <div className="w-full">
