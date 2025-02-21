@@ -48,7 +48,7 @@ const Dashboard = () => {
                   Fitur Baru Sedang dalam Proses!
                   <img src={craneImage} className="h-44"/>
                 </div>
-                <DashboarAktivitasMengaji data={data.latest_activity} loading={loading}/>
+                <DashboarAktivitasMengaji data={data.latest_activity}/>
               </>
             ):(
               <LoadingCircular />
@@ -65,14 +65,14 @@ const Dashboard = () => {
                 <div className="bg-neutral-100 flex flex-col rounded-3xl w-11/12 h-full justify-center items-center p-4 gap-4">
                   <DashboardHeader time={data.time_in_day} name={toTitleCase(data.name_husband)}/>
                   <DashboardKalender data={data.kalender}/>
-                  <div className="flex w-full gap-4 justify-between items-stretch">
+                  <div className="flex w-full gap-4 justify-between items-center">
                     <RegionalJuzTerbanyakDashboard data={data?.top_region} loading={loading}/>
                     <div className="bg-neutral-50 flex flex-col justify-center items-center h-full w-full rounded-3xl text-center font-bold text-neutral-900 gap-2 py-4">
                       Fitur Baru Sedang dalam Proses!
                       <img src={craneImage} className="h-44"/>
                     </div>
                   </div>
-                  <DashboarAktivitasMengaji data={data.latest_activity} loading={loading}/>
+                  <DashboarAktivitasMengaji data={data.latest_activity}/>
                 </div>
                 <div className="flex flex-col gap-4 p-4 rounded-lg w-1/3 h-full justify-center items-center">
                   <div className="bg-white flex justify-center items-center rounded-3xl box-shadow h-3/5 w-full">
