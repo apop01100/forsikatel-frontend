@@ -1,0 +1,42 @@
+.sideBarMenu a.active {
+    color: white;
+    background-color: #ED1B26;
+    border-radius: 8px;
+    width: 100%;
+    opacity: 100%;
+}
+
+.sideBarMenu a.dropdownActive {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #ED1B26;
+    border-radius: 8px;
+    width: 100%;
+    opacity: 100%;
+}
+
+.sideBarMenu a.active img {
+    filter: invert(1);
+}
+
+.sideBarMenu a.dropdownActive img {
+    filter: invert(1);
+}
+
+.sideBarMenu a:not(.active):hover {
+    opacity: 50%;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.sideBarMenu a:not(.dropdownActive):hover {
+    opacity: 50%;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.logoutIcon :hover img {
+    transition: opacity 0.1s ease-in-out;
+    filter: brightness(0) invert(1);
+}

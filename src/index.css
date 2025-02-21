@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --breakpoint-xs: 20rem;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+  @apply font-serif;
+  width: 100%;
+}
+#root {
+  width: 100%;
+}
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  box-sizing: content-box;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f6f7f9;
+}
+
+.noisy-gradient-background {
+  background-image: url("./assets/images/noisyGradient.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bg-record-gradient {
+  background: linear-gradient(215deg, #fff -39.39%, #ff9da1 99.57%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-record-gradient-2 {
+  background: linear-gradient(215deg, #fff -39.39%, #ffcaa8 99.57%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.line-div {
+  border-right: 0.5px solid #fff;
+  box-sizing: border-box;
+}
+
+.box-shadow {
+  box-shadow: 0px 6px 16px 0px rgba(10, 9, 11, 0.08),
+    0px 0px 0px 1px rgba(10, 9, 11, 0.05);
+}
+
+.input-shadow {
+  box-shadow: 0px 1.5px 4px -1px rgba(10, 9, 11, 0.07);
+}
+
+.carousel-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.carousel-scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+  color: #8992a7;
+}
+
+.carousel-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  color: #8992a7;
+}
+
+.carousel {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (min-width: 639px) {
+  .noisy-gradient-background {
+    background-image: none;
+  }
+}
