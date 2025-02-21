@@ -2,6 +2,7 @@ import {  useEffect } from "react"
 import useFetch from "../hooks/useFetch"
 import { useNavigate } from "react-router-dom"
 import { API_AUTH } from "../constants/URL_API"
+
 type metadata = {
     created_at: string
     is_deleted: boolean
@@ -19,7 +20,11 @@ interface AuthUserResponse {
     }
 }
 
-const AuthUser = () => {
+interface AuthUserProps {
+    children: React.ReactNode
+}
+
+const AuthUser: React.FC<AuthUserProps> = ({ children }) => {
     const accessToken = localStorage.getItem('access_token')
     const { error, fetchData } = useFetch<AuthUserResponse>(API_AUTH, 'GET', { Authorization: `Bearer ${accessToken}` })
 
@@ -35,9 +40,13 @@ const AuthUser = () => {
         if(error) {
             navigate('/login')
         }
-    }, [accessToken,  fetchData])
+    }, [])
    
-    return null
+    return (
+        <>
+            {children}
+        </>
+    )
 }
 
 export default AuthUser

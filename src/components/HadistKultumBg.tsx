@@ -34,12 +34,12 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
     const { data, error, loading, fetchData } = useFetch<hadistKultumProps>(API_HADIST_KULTUM, "GET",headers );
 
     useEffect(() => {
-            fetchData();
+        fetchData();
 
-            if (error) {
-                alert(error);
-            }
-    }, [])
+        if (error) {
+            alert(error);
+        }
+    }, [error])
     return (
         <>
         {loading ? <LoadingCircular /> : ( <>
