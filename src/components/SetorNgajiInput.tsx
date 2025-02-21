@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch"
 import { API_SETOR_NGAJI } from "../constants/URL_API"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import validationSchema from "../schemas/SetorNgajiValidationSchema"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import SuccessSnackbar from "./SuccessSnackbar"
 import ErrorInputSnackbar from "./ErrorSnackbar"
 
@@ -21,7 +21,7 @@ interface SetorNgajiProps {
 }
 
 const SetorNgajiInput: React.FC<SetorNgajiProps> = ({ onSubmitSuccess }) => {
-  const { error, loading, fetchData } = useFetch<SetorNgajiResponse>(
+  const { data,error, loading, fetchData } = useFetch<SetorNgajiResponse>(
     API_SETOR_NGAJI, 
     "POST", 
     { Authorization: `Bearer ${localStorage.getItem("access_token")}`}
@@ -29,15 +29,11 @@ const SetorNgajiInput: React.FC<SetorNgajiProps> = ({ onSubmitSuccess }) => {
   const [ showSnackbar, setShowSnackbar ] = useState(false)
 
   const handleSubmit = async (values: SetorNgajiInputValue) => {
-    try {
-      await fetchData({ juz_read: Number(values.juz) });
+    await fetchData({ juz_read: Number(values.juz) });
 
-      if (!error) {
-        setShowSnackbar(true);
-        onSubmitSuccess(); // Refresh main data after successful submission
-      }
-    } catch (err) {
-      console.error("Error submitting:", err);
+    if (!error) {
+      setShowSnackbar(true);
+      setTimeout(() => onSubmitSuccess(), 2500);
     }
   }
 

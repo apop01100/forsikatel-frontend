@@ -8,8 +8,8 @@ const BackgroundLogin = ({ children }: { children: React.ReactNode}) => {
     <div className="noisy-gradient-background sm:bg-neutral-50] sm:pt-0">
       <img src={mushafLogo} className="block sm:hidden object-cover z-10 relative top-12 left-1/4 h-60 w-56" />
       <div className="sm:flex">
-        <div className="flex flex-col items-end py-24 px-16 gap-14 w-full h-full bg-neutral-50 rounded-ss-[100px] sm:flex-1">
-          <div className="flex justify-center">
+        <div className="flex flex-col items-center py-24 px-16 gap-14 w-full h-full bg-neutral-50 rounded-ss-[100px] sm:flex-1">
+          <div className="flex justify-center items-center">
             <HeaderLogo imgSize="w-12 h-8"/>
           </div>
           <div className="sm:w-full">
