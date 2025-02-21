@@ -21,7 +21,7 @@ export interface TopRegion {
 }
 
 export interface DashboardResponse {
-    name: string
+    name_husband: string
     hadits: string
     kalender: Calendar
     last_juz: number
