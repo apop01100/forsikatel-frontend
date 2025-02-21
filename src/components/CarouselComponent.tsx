@@ -22,7 +22,7 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({data}) => {
         {/* Right gradient overlay */}
         <div className="absolute inset-y-0 right-0 w-20 pointer-events-none bg-gradient-to-l from-neutral-50 to-transparent" />
 
-        <motion.div style={{x}} className="flex gap-2 max-w-[40rem] carousel carousel-scroll">    
+        <motion.div style={{x}} className="flex gap-2 max-w-[40rem]">    
         {data.map((item, index) => (
             <div 
                 key={index} 
