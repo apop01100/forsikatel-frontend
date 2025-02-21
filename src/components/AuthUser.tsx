@@ -1,6 +1,6 @@
 import {  useEffect } from "react"
 import useFetch from "../hooks/useFetch"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { API_AUTH } from "../constants/URL_API"
 
 type metadata = {
@@ -26,11 +26,18 @@ interface AuthUserProps {
 
 const AuthUser: React.FC<AuthUserProps> = ({ children }) => {
     const accessToken = localStorage.getItem('access_token')
+    const location  = useLocation(); 
     const { error, fetchData } = useFetch<AuthUserResponse>(API_AUTH, 'GET', { Authorization: `Bearer ${accessToken}` })
 
     const navigate = useNavigate()
 
     useEffect(() => {
+        if (location.pathname === '/login' || location.pathname === '/register') {
+            localStorage.removeItem('access_token')
+            localStorage.removeItem('refresh_token')
+            return
+        }
+
         if(!accessToken) {
             navigate('/login')
             return

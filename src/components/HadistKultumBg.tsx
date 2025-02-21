@@ -42,7 +42,7 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
             if (error) {
                 alert(error);
             }
-    }, [])
+    }, [error])
     return (
         <>
         {loading ? <LoadingCircular /> : ( <>
@@ -71,7 +71,7 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
                 <h2 className="text-2xl hidden md:block font-semibold text-neutral-900">
                     Tonton Kultum Hari Ini
                 </h2>
-                <div className="bg-neutral-50 rounded-2xl pb-[4rem] box-shadow">
+                <div className="bg-neutral-50 rounded-2xl pb-[1.5rem] box-shadow">
                    {loading ? "Loading..." : 
                    <EmbedVideo 
                         videoId={data?.hadist_kultum.kultum} 
@@ -85,7 +85,7 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
         {/* Hadist hari ini */}
         <section className="flex flex-col w-full gap-2 2xl:pb-[5rem] px-[1rem] md:pr-[2.1rem] mt-5 md:mt-0">
             <h2 className="text-2xl hidden md:block font-semibold text-neutral-900">Hadits Hari Ini</h2>
-            <div className=" bg-white box-shadow rounded-2xl px-5 py-3 min-h-[10rem]">
+            <div className=" bg-white box-shadow rounded-2xl p-5 min-h-[10rem]">
                 <p className="text-justify font-source">{data?.hadist_kultum.hadist.hadist || loading}</p>
                 <br />
                 <p className="text-neutral-300 font-source">{data?.hadist_kultum.hadist.source || loading}</p>
