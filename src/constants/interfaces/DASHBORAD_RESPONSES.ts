@@ -26,8 +26,8 @@ export interface Hadist{
 }
 
 export interface DashboardResponse {
-    name: string
     hadits: Hadist
+    name_husband: string
     kalender: Calendar
     last_juz: number
     latest_activity: LatestActivity[]

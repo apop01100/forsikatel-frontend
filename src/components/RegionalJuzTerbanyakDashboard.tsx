@@ -25,7 +25,7 @@ const RegionalJuzTerbanyakDashboard: React.FC<RegionalJuzTerbanyakDashboardProps
             medal_color = "red";
           }
           return (
-            <RegionalCardDashboard medal={medal_color}>
+            <RegionalCardDashboard medal={medal_color} key={index}>
               <div className="flex flex-col">
               <h3 className="text-[15px] font-semibold font-source">{region.region}</h3>
               <span className="text-neutral-300 text-xs font-source">{region.total_juz} Juz Terbaca</span>
