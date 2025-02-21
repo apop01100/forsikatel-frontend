@@ -9,7 +9,7 @@ import { MOBILE } from "../constants/DEVICES_SIZE";
 
 const columns: ColumnDef<LatestActivity>[] = [
     { accessorKey: "region", header: "Regional" },
-    { accessorKey: "name", header: "Name" },
+    { accessorKey: "name", header: "Nama" },
     { accessorKey: "juz_read", header: "Juz yang Dibaca" },
     { 
         accessorKey: "entry_time", 

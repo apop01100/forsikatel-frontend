@@ -17,7 +17,7 @@ const DashboardHeader: React.FC<DashboardProps> = ({ time, name }) => {
     const Navigate = useNavigate();
 
     const handleClick = () => {
-        Navigate("/setormengaji")
+        Navigate("/setorngaji")
     }
 
   return (
