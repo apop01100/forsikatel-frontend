@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch"
 import { API_SETOR_NGAJI } from "../constants/URL_API"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import validationSchema from "../schemas/SetorNgajiValidationSchema"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import SuccessSnackbar from "./SuccessSnackbar"
 import ErrorInputSnackbar from "./ErrorSnackbar"
 
@@ -21,7 +21,7 @@ interface SetorNgajiProps {
 }
 
 const SetorNgajiInput: React.FC<SetorNgajiProps> = ({ onSubmitSuccess }) => {
-  const { data,error, loading, fetchData } = useFetch<SetorNgajiResponse>(
+  const { error, loading, fetchData } = useFetch<SetorNgajiResponse>(
     API_SETOR_NGAJI, 
     "POST", 
     { Authorization: `Bearer ${localStorage.getItem("access_token")}`}
