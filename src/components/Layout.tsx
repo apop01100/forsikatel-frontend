@@ -16,21 +16,22 @@ const Layout = ({ children }: { children: React.ReactNode}) => {
     const isMobile =  useMediaQuery(MOBILE);
 
   return (
-    AuthUser(),
-    <div className="flex flex-col lg:flex-row gap-4 w-full h-screen">
-        {showSideBar && 
-          <SideBarContextProvider>
-            <SideBar />
-          </SideBarContextProvider>
-        }
-        <main className="flex flex-col items-center gap-8 overflow-scroll w-full  lg:pb-8">
-          {(isDesktop && showSideBar) && <HeaderContent />}
-          <div className={`lg:mt-0 ${showSideBar ? "mt-14" : "mt-0"}  w-full`}>
-            {children}
-          </div>
-        {(isMobile && showSideBar) && <Footer/>}
-        </main>
-    </div>
+    <AuthUser>
+      <div className="flex flex-col lg:flex-row gap-4 w-full h-screen">
+          {showSideBar && 
+            <SideBarContextProvider>
+              <SideBar />
+            </SideBarContextProvider>
+          }
+          <main className="flex flex-col items-center gap-8 overflow-scroll w-full  lg:pb-8">
+            {(isDesktop && showSideBar) && <HeaderContent />}
+            <div className={`lg:mt-0 ${showSideBar ? "mt-14" : "mt-0"}  w-full`}>
+              {children}
+            </div>
+          {(isMobile && showSideBar) && <Footer/>}
+          </main>
+      </div>
+    </AuthUser>
   )
 }
 
