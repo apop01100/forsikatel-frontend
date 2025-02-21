@@ -14,7 +14,6 @@ const SetorNgaji = () => {
 
     useEffect(() => {
       fetchData();
-      console.log(data);
     }, [])
 
     return (
