@@ -32,10 +32,13 @@ const LoginForm = () => {
   }
 
   const handleSubmit = async (values: LoginValues, { resetForm }: { resetForm: () => void }) => {
-    await fetchData({ name_husband: values.fullName, phone_number: values.phoneNumber });
+    setShowError(false);
+    setShowSnackbar(false);
+    resetForm();
 
-    if (!error) {
-      resetForm();
+    await fetchData({ name_husband: values.fullName, phone_number: values.phoneNumber });
+    
+    if (data) {
       setShowSnackbar(true);
     }
 
@@ -48,9 +51,14 @@ const LoginForm = () => {
     if (data) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
+      setShowSnackbar(true);
       setTimeout(() => navigate("/"), 1000);
     }
-  }, [data, navigate]);
+    
+    if (error) {
+      setShowError(true);
+    }
+  }, [data, error, navigate]);
 
   return (
     <div className="w-full">
@@ -81,23 +89,19 @@ const LoginForm = () => {
                 <p className="text-xs font-medium">
                     Oops, ada yang tidak beres!
                 </p>
-                <ul className='text-xs font-medium'>
-                    <li>Coba periksa kembali data yang kamu masukkan.</li>
-                    <li>Pastikan koneksi internetmu stabil.</li>
-                    <li>Jika masalah berlanjut, hubungi tim dukungan kami.</li>
-                </ul> 
             </div>
-        </ErrorInputSnackbar>}
-        <SuccessSnackbar isOpen={showSnackbar} handleClose={() => {setShowSnackbar(false); } }>
-          <div className="flex flex-col font-source">
-            <p className="text-lg font-semibold">
-                Login Berhasil!
-            </p>
-            <p className="text-xs font-medium">
-                Selamat datang di website Forsikatel Mengaji.
-            </p>
-          </div>
-        </SuccessSnackbar>
+        </ErrorInputSnackbar>
+      }
+      {showSnackbar && <SuccessSnackbar isOpen={true} handleClose={() => {setShowSnackbar(false)} }>
+        <div className="flex flex-col font-source">
+          <p className="text-lg font-semibold">
+              Login Berhasil!
+          </p>
+          <p className="text-xs font-medium">
+              Selamat datang di website Forsikatel Mengaji.
+          </p>
+        </div>
+      </SuccessSnackbar>}
     </div>
     
   )
