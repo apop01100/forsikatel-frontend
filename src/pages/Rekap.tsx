@@ -1,6 +1,5 @@
 // import ComingSoon from "../components/ComingSoon"
-import TotalKhatamJuzCarousel from "../components/TotalKhatamJuzCarousel"
-import DetailPeroranganTable from "../components/DetailPeroranganTable"
+import RekapitulasiComponent from "../components/RekapitulasiComponent"
 
 export type rekapResponses = {
   detail_person:
@@ -33,15 +32,11 @@ export type rekapResponses = {
   ]
 }
 const Rekap = () => {
+  
     return (
-      <section className="flex flex-col items-center w-full gap-[2rem] pr-[2rem]">
-        <div className="flex items-center gap-5">
-            <TotalKhatamJuzCarousel />
-        </div>
-        <div className="w-full">
-            <DetailPeroranganTable />
-        </div>
-      </section>
+      <>
+      <RekapitulasiComponent />
+      </>
       // <ComingSoon />
     )
   }

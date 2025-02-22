@@ -5,17 +5,20 @@ import checkCircle from "../assets/svg/check-circled-outline.svg"
 import uncheckCircle from "../assets/svg/uncheck-circled-outline.svg"
 import { rekapResponses } from "../pages/Rekap"
 
+interface DetailPeroranganTableProps {
+    detail_person: rekapResponses["detail_person"]
+}
 
 
-const dummyData: rekapResponses["detail_person"] = 
-[
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 1, total_juz: 10, last_juz: 5, last_5days: [true, true, true, true, true], user_id: 1},
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 2, total_juz: 10, last_juz: 5, last_5days: [true, false, true, false, true], user_id: 2},
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 3, total_juz: 10, last_juz: 5, last_5days: [true, true, false, true, true], user_id: 3},
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 4, total_juz: 10, last_juz: 5, last_5days: [false, true, true, true, true], user_id: 4},
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 5, total_juz: 10, last_juz: 5, last_5days: [true, true, true, false, false], user_id: 5},
-    {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 6, total_juz: 10, last_juz: 5, last_5days: [true, false, true, true, true], user_id: 6},
-]
+// const dummyData: rekapResponses["detail_person"] = 
+// [
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 1, total_juz: 10, last_juz: 5, last_5days: [true, true, true, true, true], user_id: 1},
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 2, total_juz: 10, last_juz: 5, last_5days: [true, false, true, false, true], user_id: 2},
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 3, total_juz: 10, last_juz: 5, last_5days: [true, true, false, true, true], user_id: 3},
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 4, total_juz: 10, last_juz: 5, last_5days: [false, true, true, true, true], user_id: 4},
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 5, total_juz: 10, last_juz: 5, last_5days: [true, true, true, false, false], user_id: 5},
+//     {regional: "Regional 1",name_husband: "Ahmad", total_khatam: 6, total_juz: 10, last_juz: 5, last_5days: [true, false, true, true, true], user_id: 6},
+// ]
 
 const userColumns: ColumnDef<rekapResponses["detail_person"][0]>[] = [
     { accessorKey: "regional", header: "Regional", enableSorting: false },
@@ -41,7 +44,7 @@ const userColumns: ColumnDef<rekapResponses["detail_person"][0]>[] = [
         )}
     }
 ]
-const DetailPeroranganTable = () => {
+const DetailPeroranganTable: React.FC<DetailPeroranganTableProps> = ({detail_person}) => {
   return (
     <Card className="w-full px-[2rem] py-[1.5rem]">
         <div className="flex flex-col gap-5 w-full">
@@ -60,7 +63,7 @@ const DetailPeroranganTable = () => {
                 </div>
             </div>
 
-            <Table data={dummyData} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2"/>
+            <Table data={detail_person} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2"/>
         </div>
     </Card>
   )
