@@ -118,7 +118,7 @@ export const RegisterPage = () => {
                                         id="fullName" 
                                         label="Nama - Nama Suami" 
                                         type="text" 
-                                        placeholder='Masukkan Nama - Nama Suami'
+                                        placeholder='Masukkan Nama - Nama Suami (contoh Lety - Iwan)'
                                         autoComplete='new-password'
                                         value={values.fullName}   
                                     />
