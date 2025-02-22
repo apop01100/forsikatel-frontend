@@ -4,18 +4,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import { LatestActivity } from "../constants/interfaces/DASHBORAD_RESPONSES";
 import { regionInterpreter } from "../utils/functions/regionInterpreter";
 import { toTitleCase } from "../utils/functions/toTitleCase";
-  
-// const dummyUsers: LatestActivity[] = [
-// { region: "Jakarta", name: "Ahmad", juz_read: 5, entry_time: new Date("2025-02-18") },
-// { region: "Bandung", name: "Siti", juz_read: 3, entry_time: new Date("2025-02-17") },
-// { region: "Surabaya", name: "Budi", juz_read: 7, entry_time: new Date("2025-02-16") },
-// { region: "Medan", name: "Rina", juz_read: 4, entry_time: new Date("2025-02-15") },
-// { region: "Yogyakarta", name: "Dewi", juz_read: 6, entry_time: new Date("2025-02-14") },
-// ];
+import { useMediaQuery } from "@react-hook/media-query";
+import { MOBILE } from "../constants/DEVICES_SIZE";
 
 const columns: ColumnDef<LatestActivity>[] = [
     { accessorKey: "region", header: "Regional" },
-    { accessorKey: "name", header: "Name" },
+    { accessorKey: "name", header: "Nama" },
     { accessorKey: "juz_read", header: "Juz yang Dibaca" },
     { 
         accessorKey: "entry_time", 
@@ -28,28 +22,31 @@ const columns: ColumnDef<LatestActivity>[] = [
 
 interface DashboardAktivitasMengajiProps {
     data: LatestActivity[];
-    loading: boolean;
-    error?: any;
 }
 
 
-const DashboarAktivitasMengaji: React.FC<DashboardAktivitasMengajiProps> = ({ data, loading }) => {
+const DashboarAktivitasMengaji: React.FC<DashboardAktivitasMengajiProps> = ({ data }) => {
+    const isMobile = useMediaQuery(MOBILE);
     const transformedData = data.map((activity) => ({
         ...activity, 
-        region: regionInterpreter(activity.region), // Transform region
+        region: isMobile ? regionInterpreter(activity.region, true) : regionInterpreter(activity.region),
         name: toTitleCase(activity.name)
     }));
 
   return (
-    <div className="bg-neutral-50 flex flex-col justify-center w-full rounded-3xl px-6 py-3 gap-2">
-        <Header2 title="Aktivitas Mengaji Terbaru" className="px-2"/>
-        {
-            loading ? (
-                <p>Loading...</p>
-            ) : (
-                <Table data={transformedData} columns={columns} classNameHeader="font-medium text-sm" borderBody="border-0 font-normal" firstHighlight={true}/>
-            )
-        }
+    <div className="lg:bg-neutral-50 bg-white flex flex-col justify-center w-full rounded-3xl px-6 py-3 gap-2">
+        <Header2 title="Aktivitas Mengaji Terbaru" className="px-2 min-sm:text-lg" headerSize="text-lg lg:text-2xl"/>
+        
+        <Table 
+            data={transformedData} 
+            columns={columns} 
+            classNameHeader="font-medium text-[0.6rem] md:text-sm" 
+            classNameBody="text-[0.7rem] md:text-sm" 
+            borderBody="border-0 font-normal" 
+            firstHighlight={true} 
+            backgroundHeader="bg-white lg:bg-neutral-50"
+        />
+        
     </div>
   )
 }

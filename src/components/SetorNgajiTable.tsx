@@ -2,29 +2,6 @@ import Header2 from './Header2';
 import Table from './Table'
 import { ColumnDef } from '@tanstack/react-table'
 import { HistoryItem } from '../constants/interfaces/SETORAN_RESPONSE';
-
-
-// // Sample data
-// const userData: User[] = [
-//     { date: new Date("2024-02-01"), totalJuz: 5, latestJuz: "Juz 30", totalKhatam: "1x" },
-//     { date: new Date("2024-02-02"), totalJuz: 3, latestJuz: "Juz 15", totalKhatam: "2x" },
-//     { date: new Date("2024-02-03"), totalJuz: 4, latestJuz: "Juz 20", totalKhatam: "1x" },
-//     { date: new Date("2024-02-04"), totalJuz: 6, latestJuz: "Juz 25", totalKhatam: "3x" },
-//     { date: new Date("2024-02-05"), totalJuz: 2, latestJuz: "Juz 10", totalKhatam: "1x" },
-//     { date: new Date("2024-02-06"), totalJuz: 7, latestJuz: "Juz 29", totalKhatam: "2x" },
-//     { date: new Date("2024-02-01"), totalJuz: 5, latestJuz: "Juz 30", totalKhatam: "1x" },
-//     { date: new Date("2024-02-02"), totalJuz: 3, latestJuz: "Juz 15", totalKhatam: "2x" },
-//     { date: new Date("2024-02-03"), totalJuz: 4, latestJuz: "Juz 20", totalKhatam: "1x" },
-//     { date: new Date("2024-02-04"), totalJuz: 6, latestJuz: "Juz 25", totalKhatam: "3x" },
-//     { date: new Date("2024-02-05"), totalJuz: 2, latestJuz: "Juz 10", totalKhatam: "1x" },
-//     { date: new Date("2024-02-06"), totalJuz: 7, latestJuz: "Juz 29", totalKhatam: "2x" },
-//     { date: new Date("2024-02-01"), totalJuz: 5, latestJuz: "Juz 30", totalKhatam: "1x" },
-//     { date: new Date("2024-02-02"), totalJuz: 3, latestJuz: "Juz 15", totalKhatam: "2x" },
-//     { date: new Date("2024-02-03"), totalJuz: 4, latestJuz: "Juz 20", totalKhatam: "1x" },
-//     { date: new Date("2024-02-04"), totalJuz: 6, latestJuz: "Juz 25", totalKhatam: "3x" },
-//     { date: new Date("2024-02-05"), totalJuz: 2, latestJuz: "Juz 10", totalKhatam: "1x" },
-//     { date: new Date("2024-02-06"), totalJuz: 7, latestJuz: "Juz 29", totalKhatam: "2x" },
-// ];
   
   
 // Define table columns

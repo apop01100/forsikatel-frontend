@@ -1,7 +1,7 @@
 import register_img from '../assets/images/register_desktop.png'
 import { Formik, Form,  ErrorMessage, Field} from "formik"
 import HeaderLogo from './HeaderLogo'
-import { Link,  } from "react-router-dom"
+import { Link, useNavigate,  } from "react-router-dom"
 import RegisterInput from './AuthInput'
 import searchSVG from '../assets/svg/search.svg'
 import Button from './Button'
@@ -28,6 +28,11 @@ interface LoginResponse {
     refresh_token: string;
   }
 
+interface SubimtingData { 
+    setSubmitting: (isSubmitting: boolean) => void
+    resetForm: () => void
+}
+
 
 
 export const RegisterPage = () => {
@@ -36,7 +41,7 @@ export const RegisterPage = () => {
     const [showError, setShowError] = useState(false);
     const {  error, loading, fetchData } = useFetch<LoginResponse>(API_REGISTER, "POST");
     const initialValues = { fullName: "", phoneNumber: "",  regional: "", regionalValue: "" };
-    // const Navigate = useNavigate()
+    const Navigate = useNavigate()
 
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -48,7 +53,7 @@ export const RegisterPage = () => {
           }
       }, [error]);
 
-    async function handleSubmit(e: RegisterValues) {
+    async function handleSubmit (e: RegisterValues, { setSubmitting, resetForm }: SubimtingData) {
         setShowError(false);
         setShowSnackbar(false);
 
@@ -61,6 +66,8 @@ export const RegisterPage = () => {
 
             if (!error) {
                 setShowSnackbar(true);
+                resetForm();
+                setTimeout(() => Navigate("/login"), 1000);
             } else if (error) {
                 // Even if error is true, we already reset it above
                 setShowError(true);
@@ -68,18 +75,18 @@ export const RegisterPage = () => {
         } catch (err) {
             console.log("Error submitting:", err);
             setShowError(true);
+        } finally {
+            setSubmitting(false);
         }
                                
-            // Navigate("/login");     
-        // console.log("Error submitting:", error);
     }
 
     
   return (
     <>
         {/* Background white for mobile */}
-        <div className='noisy-gradient-background flex items-center overflow-y-auto pt-[5rem] lg:pt-0'>
-            <div className='bg-white sm:bg-transparent flex justify-center lg:items-center rounded-tl-[5rem] px-[1rem] pt-[3rem] md:pt-0 h-full w-full'>
+        <div className='noisy-gradient-background flex items-center overflow-hidden pt-[5rem] lg:pt-0'>
+            <div className='bg-neutral-50 sm:bg-transparent flex justify-center lg:items-center rounded-tl-[5rem] px-[1rem] pt-[3rem] md:pt-0 h-full w-full'>
             {/* RegisterImage */}
             <div className='hidden lg:block ml-8 relative z-10'>
                 <img draggable={false} className='hidden lg:block object-contain' src={register_img} alt="register_desktop" />
@@ -111,7 +118,7 @@ export const RegisterPage = () => {
                                         id="fullName" 
                                         label="Nama - Nama Suami" 
                                         type="text" 
-                                        placeholder='Masukkan Nama - Nama Suami'
+                                        placeholder='Masukkan Nama - Nama Suami (contoh Lety - Iwan)'
                                         autoComplete='new-password'
                                         value={values.fullName}   
                                     />
@@ -176,21 +183,21 @@ export const RegisterPage = () => {
             </section>
             </div>
         </div>
-       {showError &&  <ErrorInputSnackbar  error={showError}>
-            
-        <div className="flex flex-col font-source">
-                    <p className="text-lg font-semibold">
-                        Registrasi Gagal!
-                    </p>
-                    <p className="text-xs font-medium">
-                        Oops, ada yang tidak beres!
-                    </p>
-                    <ul className='text-xs font-medium'>
-                            <li>Coba periksa kembali data yang kamu masukkan.</li>
-                            <li>Pastikan koneksi internetmu stabil.</li>
-                            <li>Jika masalah berlanjut, hubungi tim dukungan kami.</li>
-                        </ul> 
-                </div>
+       {showError &&  
+       <ErrorInputSnackbar  error={showError}>   
+            <div className="flex flex-col font-source">
+                <p className="text-lg font-semibold">
+                    Registrasi Gagal!
+                </p>
+                <p className="text-xs font-medium">
+                    Oops, ada yang tidak beres!
+                </p>
+                <ul className='text-xs font-medium'>
+                        <li>Coba periksa kembali data yang kamu masukkan.</li>
+                        <li>Pastikan koneksi internetmu stabil.</li>
+                        <li>Jika masalah berlanjut, hubungi tim dukungan kami.</li>
+                    </ul> 
+            </div>
         </ErrorInputSnackbar>}
         <SuccessSnackbar isOpen={showSnackbar} handleClose={() => {setShowSnackbar(false); } }>
         <div className="flex flex-col font-source">

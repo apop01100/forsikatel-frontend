@@ -5,6 +5,7 @@ import arrowIcon from "../assets/svg/arrow-icon.svg"
 import { MOBILE  } from "../constants/DEVICES_SIZE"
 import { useMediaQuery } from "@react-hook/media-query"
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 interface DashboardProps {
     time: string
@@ -13,6 +14,11 @@ interface DashboardProps {
 
 const DashboardHeader: React.FC<DashboardProps> = ({ time, name }) => {
     const isMobile = useMediaQuery(MOBILE);
+    const Navigate = useNavigate();
+
+    const handleClick = () => {
+        Navigate("/setorngaji")
+    }
 
   return (
     <div className="lg:bg-neutral-50 flex lg:flex-row-reverse justify-center lg:justify-around items-center p-2 lg:p-6 gap-2 w-full rounded-3xl">
@@ -34,7 +40,11 @@ const DashboardHeader: React.FC<DashboardProps> = ({ time, name }) => {
             <Button 
                 Icon={arrowIcon} color="bg-neutral-100" 
                 padding="px-4 py-3"
-                className="font-source justify-center font-semibold gap-2 rounded-lg lg:rounded-xl w-9/12 xl:w-7/12 lg:w-11/12 md:w-6/12 lg:text-lg text-sm text-primary-300">Mulai Mengaji</Button>
+                className="font-source justify-center font-semibold gap-2 rounded-lg lg:rounded-xl w-9/12 xl:w-7/12 lg:w-11/12 md:w-6/12 lg:text-lg text-sm text-primary-300"
+                onClick={handleClick}
+                >
+                    Mulai Mengaji
+            </Button>
         </div>
     </div>
   )

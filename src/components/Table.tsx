@@ -14,8 +14,17 @@ interface TableProps<TData> {
     borderBody?: string
     classNameBody?: string
     firstHighlight?: boolean
+    backgroundHeader?: string
 }
-const Table = <TData,>({ data, columns, borderHeader="border-b-2", classNameHeader="font-semibold text-xs", borderBody="border-t-2", classNameBody="font-bold", firstHighlight=false }: TableProps<TData>) => {
+const Table = <TData,>({ 
+  data, 
+  columns, 
+  borderHeader="border-b-2", 
+  backgroundHeader="bg-neutral-50", 
+  classNameHeader="font-semibold text-xs", 
+  borderBody="border-t-2", 
+  classNameBody="font-bold", 
+  firstHighlight=false }: TableProps<TData>) => {
     const table = useReactTable({
         data,
         columns,
@@ -24,7 +33,7 @@ const Table = <TData,>({ data, columns, borderHeader="border-b-2", classNameHead
   return (
     <>
       <table className="w-full font-source min-w-max border-collapse">
-        <thead className={`text-neutral-500 sticky top-0 bg-neutral-50 ${borderHeader}`}>
+        <thead className={`text-neutral-500 sticky top-0 ${backgroundHeader} ${borderHeader}`}>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (

@@ -29,15 +29,11 @@ const SetorNgajiInput: React.FC<SetorNgajiProps> = ({ onSubmitSuccess }) => {
   const [ showSnackbar, setShowSnackbar ] = useState(false)
 
   const handleSubmit = async (values: SetorNgajiInputValue) => {
-    try {
-      await fetchData({ juz_read: Number(values.juz) });
+    await fetchData({ juz_read: Number(values.juz) });
 
-      if (!error) {
-        setShowSnackbar(true);
-        onSubmitSuccess(); // Refresh main data after successful submission
-      }
-    } catch (err) {
-      console.error("Error submitting:", err);
+    if (!error) {
+      setShowSnackbar(true);
+      setTimeout(() => onSubmitSuccess(), 2500);
     }
   }
 

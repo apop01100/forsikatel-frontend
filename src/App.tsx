@@ -1,5 +1,5 @@
 import './index.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      <HashRouter>
         <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
-      </Router>
+      </HashRouter>
     </>
   )
 }
