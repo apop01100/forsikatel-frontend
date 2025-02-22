@@ -85,8 +85,8 @@ export const RegisterPage = () => {
   return (
     <>
         {/* Background white for mobile */}
-        <div className='noisy-gradient-background flex items-center overflow-y-auto pt-[5rem] lg:pt-0'>
-            <div className='bg-white sm:bg-transparent flex justify-center lg:items-center rounded-tl-[5rem] px-[1rem] pt-[3rem] md:pt-0 h-full w-full'>
+        <div className='noisy-gradient-background flex items-center overflow-hidden pt-[5rem] lg:pt-0'>
+            <div className='bg-neutral-50 sm:bg-transparent flex justify-center lg:items-center rounded-tl-[5rem] px-[1rem] pt-[3rem] md:pt-0 h-full w-full'>
             {/* RegisterImage */}
             <div className='hidden lg:block ml-8 relative z-10'>
                 <img draggable={false} className='hidden lg:block object-contain' src={register_img} alt="register_desktop" />
