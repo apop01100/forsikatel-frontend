@@ -37,7 +37,7 @@ const LoginForm = () => {
     resetForm();
 
     await fetchData({ name_husband: values.fullName, phone_number: values.phoneNumber });
-    
+
     if (data) {
       setShowSnackbar(true);
     }
@@ -89,6 +89,9 @@ const LoginForm = () => {
                 <p className="text-xs font-medium">
                     Oops, ada yang tidak beres!
                 </p>
+                <ul className='text-xs font-medium'>
+                    <li>Coba periksa kembali data yang kamu masukkan.</li>
+                </ul> 
             </div>
         </ErrorInputSnackbar>
       }
