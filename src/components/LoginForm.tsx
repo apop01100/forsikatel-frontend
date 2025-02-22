@@ -5,7 +5,9 @@ import validationSchema from "../schemas/LoginValidationSchema";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { API_LOGIN  } from "../constants/URL_API";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ErrorInputSnackbar from './ErrorSnackbar'
+import SuccessSnackbar from "./SuccessSnackbar";
 
 interface LoginValues {
   fullName: string;
@@ -20,6 +22,8 @@ interface LoginResponse {
 
 const LoginForm = () => {
   const { data, error, loading, fetchData } = useFetch<LoginResponse>(API_LOGIN, "POST");
+  const [ showError, setShowError ] = useState(false);
+  const [ showSnackbar, setShowSnackbar ] = useState(false);
 
   const navigate = useNavigate()
   const initialValues = {
@@ -27,11 +31,16 @@ const LoginForm = () => {
     phoneNumber: "",
   }
 
-  const handleSubmit = async (values: LoginValues) => {
+  const handleSubmit = async (values: LoginValues, { resetForm }: { resetForm: () => void }) => {
     await fetchData({ name_husband: values.fullName, phone_number: values.phoneNumber });
 
+    if (!error) {
+      resetForm();
+      setShowSnackbar(true);
+    }
+
     if (error) {
-      alert(error);
+      setShowError(true);
     }
   }
 
@@ -39,7 +48,7 @@ const LoginForm = () => {
     if (data) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
-      navigate("/");
+      setTimeout(() => navigate("/"), 1000);
     }
   }, [data, navigate]);
 
@@ -62,7 +71,35 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
+
+      {showError &&  
+        <ErrorInputSnackbar  error={showError}>   
+            <div className="flex flex-col font-source">
+                <p className="text-lg font-semibold">
+                    Login Gagal!
+                </p>
+                <p className="text-xs font-medium">
+                    Oops, ada yang tidak beres!
+                </p>
+                <ul className='text-xs font-medium'>
+                    <li>Coba periksa kembali data yang kamu masukkan.</li>
+                    <li>Pastikan koneksi internetmu stabil.</li>
+                    <li>Jika masalah berlanjut, hubungi tim dukungan kami.</li>
+                </ul> 
+            </div>
+        </ErrorInputSnackbar>}
+        <SuccessSnackbar isOpen={showSnackbar} handleClose={() => {setShowSnackbar(false); } }>
+          <div className="flex flex-col font-source">
+            <p className="text-lg font-semibold">
+                Login Berhasil!
+            </p>
+            <p className="text-xs font-medium">
+                Selamat datang di website Forsikatel Mengaji.
+            </p>
+          </div>
+        </SuccessSnackbar>
     </div>
+    
   )
 }
 
