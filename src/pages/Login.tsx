@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+
 import BackgroundLogin from "../components/LoginBackground"
 import LoginForm from "../components/LoginForm"
 import { Link } from "react-router-dom";

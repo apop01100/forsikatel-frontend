@@ -4,6 +4,7 @@ import Table from "./Table"
 import checkCircle from "../assets/svg/check-circled-outline.svg"
 import uncheckCircle from "../assets/svg/uncheck-circled-outline.svg"
 import { rekapResponses } from "../pages/Rekap"
+import { regionInterpreter } from "../utils/functions/regionInterpreter"
 
 interface DetailPeroranganTableProps {
     detail_person: rekapResponses["detail_person"]
@@ -21,7 +22,11 @@ interface DetailPeroranganTableProps {
 // ]
 
 const userColumns: ColumnDef<rekapResponses["detail_person"][0]>[] = [
-    { accessorKey: "regional", header: "Regional", enableSorting: false },
+    { accessorKey: "regional", header: "Regional", enableSorting: false, 
+        cell: ({row}) => {return (
+            regionInterpreter(row.original.regional)
+        )}
+     },
     { accessorKey: "name_husband", header: "Nama - Nama Suami" , enableSorting: false},
     { accessorKey: "total_khatam", header: "Total Khatam" , enableSorting: false, 
         cell: ({row}) => {return (
@@ -63,7 +68,7 @@ const DetailPeroranganTable: React.FC<DetailPeroranganTableProps> = ({detail_per
                 </div>
             </div>
 
-            <Table data={detail_person} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2"/>
+            <Table data={detail_person} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2" classNameBody="font-semibold"/>
         </div>
     </Card>
   )

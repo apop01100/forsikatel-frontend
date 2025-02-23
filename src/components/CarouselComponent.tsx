@@ -11,15 +11,15 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({data}) => {
     const targetRef = useRef<HTMLDivElement | null>(null);
 
     const x = useMotionValue(0);
-    const springX = useSpring(x, { stiffness: 500, damping: 30 });
-    const minX = -250;
+    const springX = useSpring(x, { stiffness: 300, damping:50 });
+    const minX = -150;
     const maxX = 0;
 
       // Clamp function to restrict value between min and max
     const clamp = (val: number, min: number, max: number) => Math.min(Math.max(val, min), max);
 
     const handleWheel = (e: React.WheelEvent) => {
-        e.preventDefault();
+        // e.preventDefault();
         const newX = clamp(x.get() - e.deltaY, minX, maxX);
         x.set(newX);
       };
@@ -46,7 +46,7 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({data}) => {
                 drag="x" 
                 dragConstraints={{ left: minX, right: maxX }}
                 style={{ x: springX }} 
-                className="flex gap-2 max-w-[50rem] cursor-grab active:cursor-grabbing"
+                className="flex gap-2 min-w-[10rem] md:min-w-[20rem] lg:min-w-[30rem] max-w-[50rem] cursor-grab active:cursor-grabbing"
             >    
             <CarouselItems data={data} />
 

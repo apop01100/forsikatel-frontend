@@ -5,6 +5,10 @@ export type dummyDataCarouselProps = {
   total_khatam: number,
 }
 
+interface TotalKhatamJuzCarouselProps {
+  data: rekapResponses
+}
+
 
 
 // const dummyData: dummyDataCarouselProps[] = [
@@ -17,12 +21,12 @@ export type dummyDataCarouselProps = {
 //   {regional: "Sulawesi", total_khatam: 3},
 // ]
 
-const TotalKhatamJuzCarousel = (data: rekapResponses) => {
+const TotalKhatamJuzCarousel: React.FC<TotalKhatamJuzCarouselProps> = ({data}) => {
   return (
-    <div className="flex items-center justify-center gap-2 w-full">
+    <div className="flex items-start px-[2rem] lg:items-center lg:flex-row flex-col justify-center lg:gap-8 w-full">
         <div className="flex flex-col">
           <h2 className="font-bold text-2xl">Total Khatam dan Juz</h2>
-          <span className="text-xs font-source text-end">per regional</span>
+          <span className="text-xs font-source lg:text-end">per regional</span>
         </div>
         <CarouselComponent data={data}/>
       </div>
