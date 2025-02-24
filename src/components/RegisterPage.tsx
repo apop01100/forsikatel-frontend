@@ -5,14 +5,14 @@ import { Link, useNavigate,  } from "react-router-dom"
 import RegisterInput from './AuthInput'
 import searchSVG from '../assets/svg/search.svg'
 import Button from './Button'
-import { useState, useRef,  } from "react"
+import { useState, useRef, useEffect  } from "react"
 import RegionalPopOut from './RegionalPopOut'
 import useFetch from '../hooks/useFetch'
 import { API_REGISTER } from '../constants/URL_API'
 import validationSchema from '../schemas/RegisterValidationSchema'
 import ErrorInputSnackbar from './ErrorSnackbar'
 import SuccessSnackbar from './SuccessSnackbar'
-import { useEffect } from 'react'
+import Footer from './Footer'
 
 interface RegisterValues {
     fullName: string,
@@ -85,7 +85,7 @@ export const RegisterPage = () => {
   return (
     <>
         {/* Background white for mobile */}
-        <div className='noisy-gradient-background flex items-center overflow-hidden pt-[5rem] lg:pt-0'>
+        <div className='noisy-gradient-background flex flex-col items-center justify-between  overflow-hidden pt-[5rem] lg:pt-0'>
             <div className='bg-neutral-50 sm:bg-transparent flex justify-center lg:items-center rounded-tl-[5rem] px-[1rem] pt-[3rem] md:pt-0 h-full w-full'>
             {/* RegisterImage */}
             <div className='hidden lg:block ml-8 relative z-10'>
@@ -180,9 +180,13 @@ export const RegisterPage = () => {
                     </div>
                     
                 </div>
+                
             </section>
+           
             </div>
+            <Footer />
         </div>
+      
        {showError &&  
        <ErrorInputSnackbar  error={showError}>   
             <div className="flex flex-col font-source">

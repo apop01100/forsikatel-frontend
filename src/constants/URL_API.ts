@@ -7,3 +7,4 @@ export const API_DASHBOARD = `${API_URL}/dashboard/`
 export const API_AUTH = `${API_URL}/users/authenticate`
 export const API_PROGRESS_CHART = `${API_URL}/setoran-ngaji/chart_ngaji`
 export const API_PROGRESS = `${API_URL}/progress`
+export const API_REKAP = `${API_URL}/recap/`
