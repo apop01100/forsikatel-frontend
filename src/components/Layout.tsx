@@ -28,7 +28,7 @@ const Layout = ({ children }: { children: React.ReactNode}) => {
             <div className={`lg:mt-0 ${showSideBar ? "mt-14" : "mt-0"}  w-full`}>
               {children}
             </div>
-          {(isMobile && showSideBar) && <Footer/>}
+          {(isMobile && showSideBar) }
           </main>
       </div>
     </AuthUser>

@@ -32,7 +32,7 @@ const RekapitulasiComponent = () => {
         return (
           <>
           {!loading && data ? (
-            <section className="flex flex-col w-full lg:gap-0 pr-0 mt-[2rem] lg:mt-0 lg:pr-[2rem]">
+            <section className="flex flex-col h-[100vh] w-full lg:gap-0 pr-0 mt-[2rem] lg:mt-0 lg:pr-[2rem]">
             <div className="flex items-center">
                 <TotalKhatamJuzCarousel data={data}/>
             </div>

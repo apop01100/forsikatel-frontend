@@ -11,8 +11,8 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({data}) => {
     const targetRef = useRef<HTMLDivElement | null>(null);
 
     const x = useMotionValue(0);
-    const springX = useSpring(x, { stiffness: 300, damping:50 });
-    const minX = -150;
+    const springX = useSpring(x, { stiffness: 400, damping:30 });
+    const minX = -1000;
     const maxX = 0;
 
       // Clamp function to restrict value between min and max

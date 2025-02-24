@@ -52,7 +52,7 @@ const userColumns: ColumnDef<rekapResponses["detail_person"][0]>[] = [
 const DetailPeroranganTable: React.FC<DetailPeroranganTableProps> = ({detail_person}) => {
   return (
     <Card className="w-full px-[2rem] py-[1.5rem]">
-        <div className="flex flex-col gap-5 w-full">
+        <div className="flex flex-col gap-5 w-full ">
             <div className="flex justify-between w-full">
                 <h2 className="text-2xl font-semibold">Detail Perorangan</h2>
                 <div className="flex gap-5">
@@ -68,7 +68,9 @@ const DetailPeroranganTable: React.FC<DetailPeroranganTableProps> = ({detail_per
                 </div>
             </div>
 
+            <div className="overflow-y-auto">
             <Table data={detail_person} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2" classNameBody="font-semibold"/>
+            </div>
         </div>
     </Card>
   )

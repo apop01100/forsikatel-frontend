@@ -29,7 +29,7 @@ export const TableFilterRekap: React.FC<TableFilter> = ({data, selected}) => {
             accessorKey: "total_khatam",
             header: "Total Khatam",
             enableSorting: false,
-            cell: ({ row }) => <span>{row.original.total_khatam}x</span>,
+            cell: ({ row }) => <span>{row.original.total_khatam ?? 0}x</span>
         });
     } else if (selected === "total_juz") {
         userColumns.push({
@@ -67,9 +67,9 @@ export const TableFilterRekap: React.FC<TableFilter> = ({data, selected}) => {
     
     const selectedData = data.filter((item) => {
         if (selected === "total_khatam") {
-            return item.total_khatam;
+            return item.total_khatam !== undefined && item.total_khatam !== null;
         } else if (selected === "total_juz") {
-            return item.total_juz;
+            return item.total_khatam !== undefined && item.total_khatam !== null;
         } else if (selected === "last_juz") {
             return item.last_juz;
         } else if (selected === "last_5days") {

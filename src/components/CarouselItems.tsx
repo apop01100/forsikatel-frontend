@@ -21,7 +21,7 @@ const CarouselItems: React.FC<CarouselItemsProps> = ({data}) => {
           onMouseLeave={() => setHoveredIndex(null)}
           className="group" // group allows child elements to access hover state
         >
-          <div className={`w-[9rem] flex flex-col items-center group gap-2 rounded-3xl justify-between py-4 px-8 ${hoveredIndex === index ? "bg-neutral-50" : "bg-primary-300 "} transition-group-carousel`}>
+          <div className={`w-[9rem] flex flex-col items-center group gap-2 rounded-3xl justify-between py-4 px-6 ${hoveredIndex === index ? "bg-neutral-50" : "bg-primary-300 "} transition-group-carousel`}>
             <span 
               className={`font-source text-sm ${hoveredIndex === index ? " text-primary-400" : "text-white"} `}
               >
