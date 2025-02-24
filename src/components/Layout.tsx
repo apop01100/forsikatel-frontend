@@ -23,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode}) => {
               <SideBar />
             </SideBarContextProvider>
           }
-          <main className="flex flex-col items-center gap-8 overflow-scroll w-full  lg:pb-8">
+          <main className="flex flex-col items-center gap-8 overflow-scroll w-full">
             {(isDesktop && showSideBar) && <HeaderContent />}
             <div className={`lg:mt-0 ${showSideBar ? "mt-14" : "mt-0"}  w-full`}>
               {children}
