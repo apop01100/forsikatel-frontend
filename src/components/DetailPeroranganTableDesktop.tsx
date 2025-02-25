@@ -68,8 +68,8 @@ const DetailPeroranganTable: React.FC<DetailPeroranganTableProps> = ({detail_per
                 </div>
             </div>
 
-            <div className="overflow-y-auto">
-            <Table data={detail_person} columns={userColumns} borderHeader="bg-white" borderBody="py-4 font-border border-t-2" classNameBody="font-semibold"/>
+            <div className="overflow-y-scroll max-h-[60vh]">
+            <Table data={detail_person} columns={userColumns}  borderHeader="bg-white" borderBody="py-4 font-border border-t-2" classNameBody="font-semibold overflow-y-auto"/>
             </div>
         </div>
     </Card>

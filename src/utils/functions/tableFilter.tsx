@@ -80,6 +80,7 @@ export const TableFilterRekap: React.FC<TableFilter> = ({data, selected}) => {
     
 
     return (
+        <div className="overflow-y-scroll max-h-[57vh]">
         <Table 
             data={selectedData} 
             columns={userColumns} 
@@ -87,5 +88,6 @@ export const TableFilterRekap: React.FC<TableFilter> = ({data, selected}) => {
             borderBody="py-4 font-border border-t-2"
             classNameBody="font-semibold"
         />
+        </div>
     )
 }

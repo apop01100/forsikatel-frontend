@@ -1,7 +1,7 @@
 import MushafSajaddah from "./MushafSajaddah"
 import MushafTasbih from "../assets/images/mushaf_tasbih.png"
 import Sajaddah from "../assets/images/sajaddah.png"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import useFetch from "../hooks/useFetch"
 import EmbedVideo from "./EmbedVideo"
 import { API_HADIST_KULTUM } from "../constants/URL_API"
@@ -35,14 +35,19 @@ const headers = {
 const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
     const isMobile = useMediaQuery(MOBILE);
     const { data, error, loading, fetchData } = useFetch<hadistKultumProps>(API_HADIST_KULTUM, "GET",headers );
+    const [firstTime, setFirstTime] = useState(true);
 
     useEffect(() => {
             fetchData();
 
             if (error) {
-                alert(error);
+                // alert(error);
             }
-    }, [error])
+
+            if (firstTime) {
+                setFirstTime(false);
+            }
+    }, [firstTime])
     return (
         <>
         {loading ? <LoadingCircular /> : ( <>
