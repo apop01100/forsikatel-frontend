@@ -2,8 +2,8 @@ import { rekapResponses } from "../../pages/Rekap"
 import { ColumnDef } from "@tanstack/react-table"
 import checkCircle from "../../assets/svg/check-circled-outline.svg"
 import uncheckCircle from "../../assets/svg/uncheck-circled-outline.svg"
-import Table from "../../components/Table"
 import { regionInterpreter } from "./regionInterpreter"
+import TableCarouselFilter from "./tableCarouselFilter"
 
 interface TableFilter {
     data: rekapResponses["detail_person"]
@@ -80,14 +80,8 @@ export const TableFilterRekap: React.FC<TableFilter> = ({data, selected}) => {
     
 
     return (
-        <div className="overflow-y-scroll max-h-[57vh]">
-        <Table 
-            data={selectedData} 
-            columns={userColumns} 
-            borderHeader="bg-white" 
-            borderBody="py-4 font-border border-t-2"
-            classNameBody="font-semibold"
-        />
+        <div className="overflow-y-scroll max-h-[57vh] w-full">
+        <TableCarouselFilter data={selectedData} accessor={userColumns}/>
         </div>
     )
 }
