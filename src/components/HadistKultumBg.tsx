@@ -30,7 +30,7 @@ type hadistKultumProps = {
 }
 
 const headers = {
-    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    Authorization: `Bearer ${localStorage.getItem("access_token")}`
 }
 const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
     const isMobile = useMediaQuery(MOBILE);
