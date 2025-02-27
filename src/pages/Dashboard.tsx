@@ -10,9 +10,9 @@ import useFetch from "../hooks/useFetch";
 import { useEffect } from "react";
 import HadistHariIniDashBoard from "../components/HadistHariIniDashBoard";
 import RegionalJuzTerbanyakDashboard from "../components/RegionalJuzTerbanyakDashboard";
-import craneImage from "../assets/images/crane-logo.png";
 import LoadingCircular from "../components/LoadingCircular";
 import { toTitleCase } from "../utils/functions/toTitleCase";
+import StatistikAktivitasMengaji from "../components/DashboardStatistikAktivitasMengaji";
 
 const Dashboard = () => {
   const isMobile = useMediaQuery(MOBILE);
@@ -44,10 +44,7 @@ const Dashboard = () => {
                     <RegionalJuzTerbanyakDashboard data={data.top_region} loading={loading}/>
                   </div>
                 </div>
-                <div className="bg-white flex flex-col justify-center items-center h-full w-full rounded-3xl text-center font-bold text-neutral-900 gap-2 py-4">
-                  Fitur Baru Sedang dalam Proses!
-                  <img src={craneImage} className="h-44"/>
-                </div>
+                <StatistikAktivitasMengaji data={data.today_report_region}/>
                 <DashboarAktivitasMengaji data={data.latest_activity}/>
               </>
             ):(
@@ -67,10 +64,7 @@ const Dashboard = () => {
                   <DashboardKalender data={data.kalender}/>
                   <div className="flex w-full gap-4 justify-between items-center">
                     <RegionalJuzTerbanyakDashboard data={data?.top_region} loading={loading}/>
-                    <div className="bg-neutral-50 flex flex-col justify-center items-center h-full w-full rounded-3xl text-center font-bold text-neutral-900 gap-2 py-4">
-                      Fitur Baru Sedang dalam Proses!
-                      <img src={craneImage} className="h-44"/>
-                    </div>
+                    <StatistikAktivitasMengaji data={data.today_report_region}/>
                   </div>
                   <DashboarAktivitasMengaji data={data.latest_activity}/>
                 </div>

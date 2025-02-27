@@ -4,6 +4,7 @@ import Card from "./Card"
 import Header2 from "./Header2"
 import { regionInterpreter } from "../utils/functions/regionInterpreter";
 import { RegionProgress } from "../constants/interfaces/PROGRESS_RESPONSE";
+import { isMore } from "../utils/functions/isMore";
 
 interface ProgressMengajiHariniProps {
     data: RegionProgress[]
@@ -34,12 +35,12 @@ const ProgressMengajiHarini: React.FC<ProgressMengajiHariniProps> = ({data}) => 
                             className={`bg-primary-300 h-4 text-xs text-end px-2 rounded-full hover:bg-neutral-100 text-primary-300`} 
                             style={{
                                 width: `${select ? 
-                                    Math.round(item.jumlah_setoran / item.jumlah_user_per_region)
+                                    isMore(Math.round(item.jumlah_setoran / item.jumlah_user_per_region))
                                 : 
-                                    Math.round(item.jumlah_juz / item.jumlah_user_per_region*30)}%`
+                                    isMore(Math.round(item.jumlah_juz / 30))}%`
                             }}
                         >
-                            {select ? item.jumlah_setoran : item.jumlah_juz}/{select ? item.jumlah_user_per_region : item.jumlah_user_per_region*30}
+                            {select ? item.jumlah_setoran : item.jumlah_juz}/{select ? item.jumlah_user_per_region : 30}
                         </div>
                     </div>
                 ))}
