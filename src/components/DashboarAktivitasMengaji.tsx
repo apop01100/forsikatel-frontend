@@ -14,10 +14,15 @@ const columns: ColumnDef<LatestActivity>[] = [
     { 
         accessorKey: "entry_time", 
         header: "Waktu Laporan", 
-        cell: (info) => new Intl
-            .DateTimeFormat("en-GB", { day: "2-digit", month: "short", year: "numeric" })
-            .format(new Date(info.getValue<Date>())) 
-    },
+        cell: (info) => (
+          <span>
+            {new Intl.DateTimeFormat("id-ID", {
+            hour: "2-digit", 
+            minute: "2-digit",
+            timeZone: "Asia/Jakarta" // WIB timezone
+            }).format(new Date(info.getValue<Date>()))}
+          &nbsp;WIB</span>
+    )}
 ];
 
 interface DashboardAktivitasMengajiProps {
