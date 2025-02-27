@@ -27,12 +27,14 @@ const TotalKhatamJuzCarousel: React.FC<TotalKhatamJuzCarouselProps> = ({data}) =
   const {regionFilter, setRegionFilter} = UseRekapContext()
   return (
     <div className="flex items-start px-[2rem] overflow-hidden lg:items-center lg:flex-row flex-col gap-5 justify-center lg:gap-8 w-full">
-        <div className="flex flex-col">
-          <h2 className="font-bold text-2xl">Total Khatam dan Juz</h2>
-          <span className="text-xs font-source lg:text-end">per regional</span>
+        <div className="flex flex-col justify-between lg:gap-[4rem]">
+          <div className="flex flex-col">
+            <h2 className="font-bold text-2xl">Total Khatam dan Juz</h2>
+            <span className="text-xs font-source lg:text-end">per regional</span>
+          </div>
           {regionFilter && 
             <button 
-              className="text-xs font-source bg-neutral-200 hover:bg-neutral-300 hover:cursor-pointer text-neutral-800 rounded-md px-2 py-1" 
+              className="text-xs font-source font-semibold bg-neutral-200 hover:bg-neutral-300 hover:cursor-pointer text-neutral-800 rounded-md px-2 py-1" 
               onClick={()=> setRegionFilter("")}
             >
                 Show all
