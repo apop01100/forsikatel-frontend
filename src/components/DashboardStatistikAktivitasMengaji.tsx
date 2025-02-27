@@ -19,7 +19,7 @@ const StatistikAktivitasMengaji: React.FC<StatistikAktivitasMengajiProops> = ({ 
                     <div
                         className={`${data.user_region === item.region ? "bg-neutral-300" : "bg-primary-300"} flex h-full text-xs px-2 justify-end rounded-full hover:bg-neutral-100 text-primary-300`}
                         style={{
-                            width: `${Math.round(item.total_users_setor / item.total_users_region)}`
+                            width: `${Math.round(item.total_users_setor / item.total_users_region)*100}%`
                         }}
                     >   
                         {data.stars.includes(item.region) && <img src={starIcon} />}
