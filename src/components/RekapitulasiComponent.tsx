@@ -48,7 +48,7 @@ const RekapitulasiComponent = () => {
             </div>
             <div className="flex items-center justify-end mr-[2rem]">
                 <img src={zoomInSvg} alt="zoom_in_logo" />
-                <span className="text-[10px] lg:text-xs text-neutral-900 font-source">Klik salah satu regional untuk melihat individu.</span>
+                <span className="text-[10px] lg:text-xs text-neutral-900 font-source">Arahkan cursor ke salah satu regional untuk melihat individu.</span>
             </div>
             <div className="w-full  mt-[1rem] lg:mt-0">
               {isTablet && <DetailPeroranganTableMobile detail_person={data.detail_person}/>}
