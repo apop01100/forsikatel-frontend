@@ -29,12 +29,12 @@ type hadistKultumProps = {
     message: string
 }
 
-const headers = {
-    Authorization: `Bearer ${localStorage.getItem("access_token")}`
-}
+// const headers = {
+//     Authorization: `Bearer ${localStorage.getItem("access_token")}`
+// }
 const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
     const isMobile = useMediaQuery(MOBILE);
-    const { data, error, loading, fetchData } = useFetch<hadistKultumProps>(API_HADIST_KULTUM, "GET",headers );
+    const { data, error, loading, fetchData } = useFetch<hadistKultumProps>(API_HADIST_KULTUM, "GET", {Authorization: `Bearer ${localStorage.getItem("access_token")}`});
     const [firstTime, setFirstTime] = useState(true);
 
     useEffect(() => {
@@ -48,6 +48,7 @@ const HadistKultumBg = ({children}: {children: React.ReactNode}) => {
                 setFirstTime(false);
             }
     }, [firstTime])
+    
     return (
         <>
         {loading ? <LoadingCircular /> : ( <>
