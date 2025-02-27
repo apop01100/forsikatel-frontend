@@ -1,3 +1,4 @@
+
 export interface LatestActivity {
     region: string;
     name: string;
@@ -25,6 +26,18 @@ export interface Hadist{
     source: string
 }
 
+export interface ProgressData {
+    region: string;
+    total_users_setor: number;
+    total_users_region: number;
+}
+
+export interface ActivityStatistics {
+    progress_data: ProgressData[]
+    stars: string[];
+    user_region: string;
+}
+
 export interface DashboardResponse {
     hadits: Hadist
     name_husband: string
@@ -33,6 +46,6 @@ export interface DashboardResponse {
     latest_activity: LatestActivity[]
     message: string
     time_in_day: string
-    today_report_region: []
+    today_report_region: ActivityStatistics
     top_region: TopRegion[]
 }
