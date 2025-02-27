@@ -35,9 +35,9 @@ const ProgressMengajiHarini: React.FC<ProgressMengajiHariniProps> = ({data}) => 
                             className={`bg-primary-300 h-4 text-xs text-end px-2 rounded-full hover:bg-neutral-100 text-primary-300`} 
                             style={{
                                 width: `${select ? 
-                                    isMore(Math.round(item.jumlah_setoran / item.jumlah_user_per_region)*100)
+                                    isMore(Math.round(item.jumlah_setoran / item.jumlah_user_per_region*100))
                                 : 
-                                    isMore(Math.round(item.jumlah_juz / item.jumlah_user_per_region)*100)}%`
+                                    isMore(Math.round(item.jumlah_juz / item.jumlah_user_per_region*100))}%`
                             }}
                         >
                             {select ? item.jumlah_setoran : item.jumlah_juz}/{item.jumlah_user_per_region}
