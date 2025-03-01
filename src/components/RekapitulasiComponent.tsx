@@ -17,14 +17,11 @@ interface rekapContextProps {
 
 const RekapContext = createContext<rekapContextProps | null>(null);
 
-const headers = {
-  Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-}
 const RekapitulasiComponent = () => {
     const{ data, loading, error, fetchData} = useFetch<rekapResponses>(
         API_REKAP, 
         "GET", 
-        headers
+        {Authorization: `Bearer ${localStorage.getItem("access_token")}`}
       )
       const isTablet = useMediaQuery(TABLET);
       const isDesktop = useMediaQuery(DESKTOP);
