@@ -2,7 +2,7 @@ import './index.css'
 import { Routes, Route, HashRouter } from "react-router-dom";
 import Layout from './components/Layout';
 import Login from './pages/Login';
-import Register from './pages/Register';
+// import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import HaditsKultum from './pages/HaditsKultum';
 import SetorNgaji from './pages/SetorNgaji';
