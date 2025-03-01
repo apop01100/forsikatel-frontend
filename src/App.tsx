@@ -20,7 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/haditskultum" element={<HaditsKultum />} />
             <Route path="/setorngaji" element={<SetorNgaji />} />
             <Route path="/rekap" element={<Rekap />} />
