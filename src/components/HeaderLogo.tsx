@@ -19,8 +19,8 @@ const HeaderLogo: React.FC<HeaderLogoProps> = ({
     { src: logoBumn, alt: "logo bumn" },
     { src: logoAkhlak, alt: "logo akhlak" },
     { src: logoForsikatel, alt: "logo forsikatel" },
-    { src: logoTelkom, alt: "logo telkom" },
     { src: logoTelkomAkses, alt: "logo telkom akses" },
+    { src: logoTelkom, alt: "logo telkom" },
   ];
 
   return (
